@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Quicksand } from '@next/font/google'
+import { Quicksand, Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 
-const quicksand = Quicksand({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Favourites() {
   return (
     <>
       <Head>
@@ -19,7 +19,6 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <h2 className={quicksand.className}>Jokes</h2>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
@@ -70,10 +69,10 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2 className={quicksand.className}>
+            <h2 className={inter.className}>
               Docs <span>-&gt;</span>
             </h2>
-            <p className={quicksand.className}>
+            <p className={inter.className}>
               Find in-depth information about Next.js features and&nbsp;API.
             </p>
           </a>
@@ -84,10 +83,10 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2 className={quicksand.className}>
+            <h2 className={inter.className}>
               Learn <span>-&gt;</span>
             </h2>
-            <p className={quicksand.className}>
+            <p className={inter.className}>
               Learn about Next.js in an interactive course with&nbsp;quizzes!
             </p>
           </a>
@@ -98,10 +97,10 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2 className={quicksand.className}>
+            <h2 className={inter.className}>
               Templates <span>-&gt;</span>
             </h2>
-            <p className={quicksand.className}>
+            <p className={inter.className}>
               Discover and deploy boilerplate example Next.js&nbsp;projects.
             </p>
           </a>
@@ -112,10 +111,10 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h2 className={quicksand.className}>
+            <h2 className={inter.className}>
               Deploy <span>-&gt;</span>
             </h2>
-            <p className={quicksand.className}>
+            <p className={inter.className}>
               Instantly deploy your Next.js site to a shareable URL
               with&nbsp;Vercel.
             </p>
