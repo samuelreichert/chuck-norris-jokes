@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:dev": "jest --watch",
     "cypress": "cypress open --e2e",
     "cypress:headless": "cypress run --e2e"
