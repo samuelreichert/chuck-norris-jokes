@@ -19,7 +19,7 @@ type ParamsType = {
 }
 
 export const useHomeJokes = ({ refetchInterval }: ParamsType) => {
-  // console.log(refetchInterval)
+  console.log(refetchInterval)
 
   return useQuery('homeJokes', getHomeJokes, {
     refetchOnWindowFocus: false,
