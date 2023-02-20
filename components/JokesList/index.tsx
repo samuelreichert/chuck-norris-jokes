@@ -1,7 +1,8 @@
-import { useQuery } from 'react-query'
+import { FC } from 'react'
 import { styled } from '@/stitches.config'
+import { useHomeJokes } from './useHomeJokes'
 
-type APIJoke = {
+export type APIJoke = {
   created_at: string
   icon_url: string
   id: string
@@ -10,23 +11,8 @@ type APIJoke = {
   value: string
 }
 
-const getHomeJokes = async () => {
-  const results = await Promise.all(
-    [...Array(10)].map(async () => {
-      const url = new URL(process.env.NEXT_PUBLIC_API_URL || '')
-      const res = await fetch(url, {
-        method: 'GET',
-      })
-      return res.json()
-    })
-  )
-  return results
-}
-
-export const JokesList = ({}) => {
-  const { data, isLoading } = useQuery('homeJokes', getHomeJokes, {
-    refetchOnWindowFocus: false,
-  })
+export const JokesList: FC = () => {
+  const { data, isLoading } = useHomeJokes({ refetchInterval: false })
 
   const setFavourite = (item: APIJoke) => {
     console.log(item)
@@ -37,10 +23,10 @@ export const JokesList = ({}) => {
   }
 
   return (
-    <List>
+    <List data-testid="jokes-list">
       {data?.map(item => (
         <Row key={item.id}>
-          <Joke>{item.value}</Joke>
+          <Joke data-testid="joke-item">{item.value}</Joke>
           <a href="#" onClick={() => setFavourite(item)}>
             Favourite
           </a>
