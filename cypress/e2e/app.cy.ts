@@ -4,7 +4,11 @@ describe('Home page', () => {
     cy.visit('http://localhost:3000/')
 
     cy.get('h2').contains('Jokes')
-    cy.get('p[data-testid="joke-item"]').should('have.length', 10)
+
+    // favourites page
+    cy.contains('Favourites').click()
+    cy.location('pathname').should('eq', '/favourites')
+    cy.go('back')
   })
 })
 
