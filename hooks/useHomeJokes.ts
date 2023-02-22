@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import { APIJoke } from '.'
+import { APIJoke } from '@/components/JokesList'
 
 export const getHomeJokes = async (): Promise<APIJoke[]> => {
   const results: APIJoke[] = await Promise.all(
@@ -18,10 +18,12 @@ type ParamsType = {
   refetchInterval: number | boolean
 }
 
-export const useHomeJokes = ({ refetchInterval }: ParamsType) => {
+const useHomeJokes = ({ refetchInterval }: ParamsType) => {
   console.log(refetchInterval)
 
   return useQuery('homeJokes', getHomeJokes, {
     refetchOnWindowFocus: false,
   })
 }
+
+export default useHomeJokes

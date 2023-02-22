@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { styled } from '@/stitches.config'
-import { useHomeJokes } from './useHomeJokes'
+import useHomeJokes from '@/hooks/useHomeJokes'
+import useFavourites from '@/hooks/useFavourites'
+import { Button } from './Button'
 
 export type APIJoke = {
   created_at: string
@@ -13,10 +15,7 @@ export type APIJoke = {
 
 export const JokesList: FC = () => {
   const { data, isLoading } = useHomeJokes({ refetchInterval: false })
-
-  const setFavourite = (item: APIJoke) => {
-    console.log(item)
-  }
+  const { addFavourite, favouritesCount } = useFavourites()
 
   if (isLoading) {
     return <p>Loading...</p>
@@ -27,9 +26,9 @@ export const JokesList: FC = () => {
       {data?.map(item => (
         <Row key={item.id}>
           <Joke data-testid="joke-item">{item.value}</Joke>
-          <a href="#" onClick={() => setFavourite(item)}>
-            Favourite
-          </a>
+          {favouritesCount < 10 && (
+            <Button onClick={() => addFavourite(item)}>Favourite</Button>
+          )}
         </Row>
       ))}
     </List>
