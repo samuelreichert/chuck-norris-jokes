@@ -1,4 +1,5 @@
 import useLocalStorage from '@/hooks/useLocalStorage'
+import { APIJoke } from '@/types'
 
 const MAX_FAVOURITES = 10
 
@@ -6,16 +7,16 @@ const useFavourites = () => {
   const [favourites, setFavourites] = useLocalStorage('favourites', [])
 
   const removeFavourite = (id: string) => {
-    const newFavourites = favourites.filter((fav: any) => fav.id !== id)
+    const newFavourites = favourites.filter((fav: APIJoke) => fav.id !== id)
     setFavourites(newFavourites)
   }
 
-  const addFavourite = (item: any) => {
+  const addFavourite = (item: APIJoke) => {
     if (favourites >= MAX_FAVOURITES) {
       return
     }
 
-    if (favourites.find((fav: any) => fav.id === item.id)) {
+    if (favourites.find((fav: APIJoke) => fav.id === item.id)) {
       return
     }
 

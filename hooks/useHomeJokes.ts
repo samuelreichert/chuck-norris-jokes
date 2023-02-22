@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import { APIJoke } from '@/components/JokesList'
+import { APIJoke } from '@/types'
 
 export const getHomeJokes = async (): Promise<APIJoke[]> => {
   const results: APIJoke[] = await Promise.all(

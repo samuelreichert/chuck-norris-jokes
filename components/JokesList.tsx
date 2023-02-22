@@ -4,15 +4,6 @@ import useHomeJokes from '@/hooks/useHomeJokes'
 import useFavourites from '@/hooks/useFavourites'
 import { Button } from './Button'
 
-export type APIJoke = {
-  created_at: string
-  icon_url: string
-  id: string
-  updated_at: string
-  url: string
-  value: string
-}
-
 export const JokesList: FC = () => {
   const { data, isLoading } = useHomeJokes({ refetchInterval: false })
   const { addFavourite, favouritesCount } = useFavourites()

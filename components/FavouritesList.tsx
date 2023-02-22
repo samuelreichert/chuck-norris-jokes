@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import useFavourites from '@/hooks/useFavourites'
 import { styled } from '@/stitches.config'
+import { APIJoke } from '@/types'
 import { Button } from './Button'
 
 export const FavouritesList: FC = () => {
@@ -12,7 +13,7 @@ export const FavouritesList: FC = () => {
 
   return (
     <List data-testid="favourites-list">
-      {favourites.map((favourite: any) => (
+      {favourites.map((favourite: APIJoke) => (
         <Row key={favourite.id}>
           <Favourite data-testid="favourites-item">{favourite.value}</Favourite>
           <Button onClick={() => removeFavourite(favourite.id)}>Remove</Button>
