@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Box } from '@/components/Box'
+import { FavouritesList } from '@/components/FavouritesList'
 
 export default function Favourites() {
   return (
@@ -10,6 +11,8 @@ export default function Favourites() {
 
       <Box>
         <h2>Favourites</h2>
+
+        <FavouritesList />
       </Box>
     </>
   )
