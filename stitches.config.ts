@@ -59,7 +59,7 @@ const globalStyles = globalCss({
     transition: 'opacity $duration ease-in-out',
   },
   'a:hover, a:focus': {
-    opacity: '0.8',
+    opacity: '0.5',
   },
   '@font-face': [
     {

@@ -2,7 +2,7 @@ import React from 'react'
 import * as ReactQuery from 'react-query'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
-import { JokesList } from '.'
+import { JokesList } from './JokesList'
 
 const useMockedQuery = props => {
   return jest.spyOn(ReactQuery, 'useQuery').mockImplementation(() => {
