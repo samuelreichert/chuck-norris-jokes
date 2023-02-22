@@ -74,7 +74,7 @@ describe('FavouritesList', () => {
 
     useFavourites.mockImplementation(() => props)
 
-    const { getByTestId, getAllByText } = render(<FavouritesList />)
+    const { getAllByText } = render(<FavouritesList />)
     const removeButton = getAllByText('Remove')[0]
 
     fireEvent.click(removeButton)
