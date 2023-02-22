@@ -4,7 +4,7 @@ import { APIJoke } from '@/types'
 export const getHomeJokes = async (): Promise<APIJoke[]> => {
   const results: APIJoke[] = await Promise.all(
     [...Array(10)].map(async () => {
-      const url = new URL(process.env.NEXT_PUBLIC_API_URL || '')
+      const url = new URL('https://api.chucknorris.io/jokes/random')
       const res = await fetch(url, {
         method: 'GET',
       })

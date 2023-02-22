@@ -23,15 +23,18 @@ describe('Favourites page', () => {
     cy.contains('button', 'Favourite').should('be.visible').click()
     cy.go('back')
   }
+
   it('should see an empty page', () => {
     cy.visit('http://localhost:3000/favourites')
     cy.contains('No favourites yet...').should('be.visible')
   })
+
   it('should see the added favourite', () => {
     cy.visit('http://localhost:3000/favourites')
     addFavourite()
     cy.get('[data-testid="favourites-item"]').should('be.visible')
   })
+
   it('should be able to remove a favourite', () => {
     cy.visit('http://localhost:3000/favourites')
     addFavourite()
