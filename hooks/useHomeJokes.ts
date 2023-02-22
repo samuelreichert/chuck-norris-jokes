@@ -14,13 +14,7 @@ export const getHomeJokes = async (): Promise<APIJoke[]> => {
   return results
 }
 
-type ParamsType = {
-  refetchInterval: number | boolean
-}
-
-const useHomeJokes = ({ refetchInterval }: ParamsType) => {
-  console.log(refetchInterval)
-
+const useHomeJokes = () => {
   return useQuery('homeJokes', getHomeJokes, {
     refetchOnWindowFocus: false,
   })

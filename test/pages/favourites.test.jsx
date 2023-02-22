@@ -1,7 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import useFavourites from '@/hooks/useFavourites'
 import { render } from '@testing-library/react'
+import useFavourites from '@/hooks/useFavourites'
 import Favourites from '@/pages/favourites'
 
 jest.mock('@/hooks/useFavourites', () => jest.fn())

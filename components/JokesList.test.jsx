@@ -1,14 +1,12 @@
 import React from 'react'
-import * as ReactQuery from 'react-query'
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
+import useFetchJoke from '@/hooks/useFetchJoke'
+import useHomeJokes from '@/hooks/useHomeJokes'
 import { JokesList } from './JokesList'
 
-const useMockedQuery = props => {
-  return jest.spyOn(ReactQuery, 'useQuery').mockImplementation(() => {
-    return props
-  })
-}
+jest.mock('@/hooks/useFetchJoke', () => jest.fn())
+jest.mock('@/hooks/useHomeJokes', () => jest.fn())
 
 describe('JokesList', () => {
   it('it should render JokesList with 2 jokes', () => {
@@ -30,7 +28,11 @@ describe('JokesList', () => {
         value: 'Second joke',
       },
     ]
-    useMockedQuery({ isLoading: false, data })
+    useHomeJokes.mockImplementation(() => ({
+      isLoading: false,
+      data,
+    }))
+    useFetchJoke.mockImplementation(() => ({ isLoading: true }))
     const { getAllByTestId, getByTestId } = render(<JokesList />)
 
     expect(getByTestId('jokes-list')).toBeInTheDocument()
@@ -38,7 +40,10 @@ describe('JokesList', () => {
   })
 
   it('it should render the loading component while jokes are being fetched', () => {
-    useMockedQuery({ isLoading: true })
+    useHomeJokes.mockImplementation(() => ({
+      isLoading: true,
+    }))
+    useFetchJoke.mockImplementation(() => ({ isLoading: true }))
     const { getByText, queryByTestId } = render(<JokesList />)
 
     expect(queryByTestId('jokes-list')).not.toBeInTheDocument()
