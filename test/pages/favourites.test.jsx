@@ -7,8 +7,8 @@ import Favourites from '@/pages/favourites'
 jest.mock('@/hooks/useFavourites', () => jest.fn())
 
 describe('Favourites', () => {
-  it('renders favourite page with content', () => {
-    const favData = [
+  const setupTest = testProps => {
+    const favourites = [
       {
         created_at: '2022-02-02',
         icon_url: 'url',
@@ -28,12 +28,19 @@ describe('Favourites', () => {
     ]
 
     const props = {
-      favourites: favData,
-      removeFavourite: () => {},
-      favouritesCount: favData.length,
+      favourites,
+      favouritesCount: favourites.length,
+      removeFavourite: jest.fn(),
+      ...testProps,
     }
 
     useFavourites.mockImplementation(() => props)
+
+    return props
+  }
+
+  it('renders favourite page with content', () => {
+    setupTest()
 
     const { getAllByTestId, getByTestId, getByText } = render(<Favourites />)
 
@@ -43,13 +50,7 @@ describe('Favourites', () => {
   })
 
   it('renders empty favourite page', () => {
-    const props = {
-      favourites: [],
-      removeFavourite: () => {},
-      favouritesCount: 0,
-    }
-
-    useFavourites.mockImplementation(() => props)
+    setupTest({ favourites: [], favouritesCount: 0 })
 
     const { getByText, queryAllByTestId, queryByTestId } = render(
       <Favourites />
