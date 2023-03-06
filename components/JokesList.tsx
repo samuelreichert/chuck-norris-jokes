@@ -19,15 +19,12 @@ export const JokesList: FC = () => {
 
   useEffect(() => {
     if (data) {
-      console.log('data', data)
       setJokes(data)
     }
   }, [data])
 
   useEffect(() => {
     if (newJoke) {
-      console.log('newJoke', newJoke)
-      console.log('effect', jokes)
       let newJokes: APIJoke[] = []
       if (jokes.length >= MAX_JOKES) {
         newJokes = [newJoke, ...jokes.slice(0, jokes.length - 1)]
